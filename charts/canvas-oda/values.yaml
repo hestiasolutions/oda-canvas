@@ -114,6 +114,23 @@ keycloak:
                 "manage-clients"
               ]
              }
+            },
+            {
+            "username": "service-account-credentialsmanagement-operator",
+            "enabled": true,
+            "clientRoles": {
+              "realm-management": [
+                "view-clients"
+              ]
+             }
+            }
+          ],
+          "clients": [
+            {
+            "clientId": "credentialsmanagement-operator",
+            "enabled": true,
+            "standardFlowEnabled": false,
+            "serviceAccountsEnabled": true,
             }
           ]
         }
@@ -143,12 +160,12 @@ identityconfig-operator-keycloak:
   deployment:
     operatrorName: identityconfig-operator-keycloak
     idkopImage: tmforumodacanvas/identityconfig-operator-keycloak
-    idkopVersion: 1.0.0
+    idkopVersion: 1.0.1
     idkopPrereleaseSuffix: 
     imagePullPolicy: IfNotPresent
     istioGateway: true
     idlistkeyImage: tmforumodacanvas/identity-listener-keycloak
-    idlistkeyVersion: 0.7.2
+    idlistkeyVersion: 0.7.3
     idlistkeyPrereleaseSuffix: 
     monitoredNamespaces: 'components'           # comma separated list of namespaces
     keycloak: *portKeycloak
@@ -163,7 +180,7 @@ identityconfig-operator-keycloak:
     kcrealm: odari
     # -- Log level [python] (https://docs.python.org/3/library/logging.html
     loglevel: '20'
-   
+      
 dependentapi-simple-operator:
   enabled: true
   image: tmforumodacanvas/dependentapi-simple-operator
@@ -337,8 +354,8 @@ secretsmanagement-operator:
 
 oda-webhook:
   image: tmforumodacanvas/compcrdwebhook
-  version: 1.0.0
-  prereleaseSuffix:  
+  version: 1.0.1
+  prereleaseSuffix:
   imagePullPolicy: IfNotPresent
  
 # -----------------------------------------------------------------------------
